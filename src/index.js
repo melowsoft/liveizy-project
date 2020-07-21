@@ -13,6 +13,10 @@ import './index.css';
 
 //Pages
 const Home = lazy(() => import('./views/Home/Home'))
+const Login = lazy(() => import('./views/Login/Login'))
+
+//Dashboard Routes
+const Dashboard = lazy(() => import('./Layouts/Dashboard'))
 
 const hist = createBrowserHistory();
 
@@ -25,11 +29,15 @@ ReactDOM.render(
   <Provider store={store}>
     <Suspense fallback={<div>Loading...</div>}>
       <React.StrictMode>
-        <Router history={hist}>
-        <Route exact path="/" component={Home} />
-        </Router>
+          <Router history={hist}>
+            <Switch>
+               <Route path="/admin" component={Dashboard} />
+               <Route exact path="/login" component={Login} />
+               <Route exact path="/" component={Home} />
+            </Switch>
+          </Router>
       </React.StrictMode>
-      </Suspense>
+    </Suspense>
   </Provider>,
   document.getElementById('root')
 );

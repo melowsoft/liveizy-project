@@ -154,6 +154,11 @@ const styles = {
     quoteIcon: {
         width: 20,
         height: 30
+    },
+    forgetPassword: {
+        display: 'inline',
+        float: 'right',
+        color: '#1461A2'
     }
 }
 
