@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {withStyles} from "@material-ui/core"
+import { Link } from 'react-router-dom'
 
 //Components
 import GridContainer from "../../components/Grid/GridContainer"
@@ -60,7 +61,7 @@ class Home extends Component {
 
                             <div className={classes.pageHeader}>
                                 <h1 className={classes.pageHeading}>Create your free Account</h1>
-                                <p className={classes.alt}>Already have an account? <sapn className={classes.link}>Log in</sapn></p>
+                                <p className={classes.alt}>Already have an account? <Link to="/login"><sapn className={classes.link}>Log in</sapn></Link></p>
                             </div>
 
                             <GridContainer>
