@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core'
 
 //styles
 import styles from './PropertyStyles'
-import { classes } from 'istanbul-lib-coverage'
+
 
 import PropertyTable from '../../components/PropertyTable/PropertyTable'
 import NewProperty from '../../components/NewProperty/NewProperty'

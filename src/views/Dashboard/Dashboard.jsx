@@ -3,7 +3,7 @@ import { withStyles } from '@material-ui/core'
 
 //styles
 import styles from './DashboardStyles'
-import { classes } from 'istanbul-lib-coverage'
+
 
 class Dashboard extends Component {
     render(){

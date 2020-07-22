@@ -4,13 +4,12 @@ import classnames from 'classnames'
 
 import Logo from '../../assets/images/liveizy-logo-white.png'
 import Avatar from "../../assets/images/default-avatar.png"
-import {Dashboard,Home,AccountBalanceWallet, DashboardOutlined,HomeOutlined,AccountBalanceWalletOutlined,AppsOutlined,PortraitOutlined,DescriptionOutlined, SupervisedUserCircleOutlined, MonetizationOnOutlined, MessageOutlined} from "@material-ui/icons"
+import { DashboardOutlined,HomeOutlined,AccountBalanceWalletOutlined,PortraitOutlined,DescriptionOutlined, SupervisedUserCircleOutlined, MessageOutlined} from "@material-ui/icons"
 
 
 
 import styles from './SidebarStyles'
-import GridContainer from '../Grid/GridContainer'
-import GridItem from '../Grid/GridItem'
+
 
 class Sidebar extends Component {
     render(){

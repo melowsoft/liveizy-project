@@ -5,8 +5,7 @@ import { Switch, Route} from 'react-router-dom'
 
 //routes
 import routes from './DashboardRoutes'
-import GridContainer from '../components/Grid/GridContainer'
-import GridItem from '../components/Grid/GridItem'
+
 import Sidebar from '../components/Sidebar/Sidebar'
 import Header from '../components/Header/Header'
 
@@ -32,7 +31,7 @@ const switchRoutes = (
 class Control extends Component {
 
     render(){
-        const { classes, ...rest } = this.props;
+        const { classes} = this.props;
         return (
             <div className={classes.mainWrapper}>
                 <div className={classes.tabContainer}>

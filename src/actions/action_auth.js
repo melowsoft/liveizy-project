@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 //helper function for local storage
-import { addToLocalStorage, getFromLocalStorage, removeFromLocalStorage } from '../helpers/browserStorage';
+import { addToLocalStorage } from '../helpers/browserStorage';
 
 //backend base url
 const BACKEND_URL = "https://liveizy2.azurewebsites.net/api";
