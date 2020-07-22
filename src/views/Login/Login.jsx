@@ -32,9 +32,7 @@ class Login extends Component {
             if(!loginDetails.status) {
                 return {
                   serverError: loginDetails.message,
-                  loading: false,
-                  email: '',
-                  password: ''              
+                  loading: false           
                 }
              } else {
                props.history.push('/admin/property');

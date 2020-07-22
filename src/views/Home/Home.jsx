@@ -34,17 +34,10 @@ class Home extends Component {
         if (props.auth.signedUpDetails !== state.auth.signedUpDetails) {
             const {signedUpDetails} = props.auth
             if(!signedUpDetails.data.status) {
-                return {
+               return this.setState ({
                   serverError: signedUpDetails.data.message,
-                  loading: false,
-                  firstName: '',
-                  lastName: '',
-                  email: '',
-                  password: '',
-                  confirmPassword: '',
-                  phoneNumber: '',
-                  
-                }
+                  loading: false              
+                })
              } else {
                props.history.push('signup-success');
              }
@@ -53,6 +46,7 @@ class Home extends Component {
        }
 
     onInputChange = (event) => {
+        console.log(event.target.value, event.target.name, "on change", this.state)
         this.setState({
           [event.target.name]: event.target.value
         })
@@ -80,16 +74,16 @@ class Home extends Component {
                  this.setState({
                      loading: true
                  })
-                 signupUser(deatils)                    
+               return  signupUser(deatils)                    
             }
            
           }
+          return;
       }
 
     render(){
         const {classes} = this.props
         const  { firstName, email, password, confirmPassword, phoneNumber, lastName, serverError, loading } = this.state
-        console.log(this.state.serverError, "error message")
         return(
             <div className="home">
                 {loading && <PageLoader />}
