@@ -4,7 +4,7 @@ import classnames from 'classnames'
 
 import Logo from '../../assets/images/liveizy-logo-white.png'
 import Avatar from "../../assets/images/default-avatar.png"
-import {Dashboard,Home,AccountBalanceWallet, DashboardOutlined,HomeOutlined,AccountBalanceWalletOutlined,AppsOutlined,PortraitOutlined,DescriptionOutlined} from "@material-ui/icons"
+import {Dashboard,Home,AccountBalanceWallet, DashboardOutlined,HomeOutlined,AccountBalanceWalletOutlined,AppsOutlined,PortraitOutlined,DescriptionOutlined, SupervisedUserCircleOutlined, MonetizationOnOutlined, MessageOutlined} from "@material-ui/icons"
 
 
 
@@ -63,15 +63,15 @@ class Sidebar extends Component {
                                 <p className={classes.LinkName}>Lpms</p>
                             </div>
                             <div className={classes.linkButtonFlex}>
-                                <Home className={classes.icon}/>
+                                <SupervisedUserCircleOutlined className={classes.icon}/>
                                 <p className={classes.LinkName}>Income</p>
                             </div>
                             <div className={classes.linkButtonFlex}>
-                                <Home className={classes.icon}/>
+                                <SupervisedUserCircleOutlined className={classes.icon}/>
                                 <p className={classes.LinkName}>Tenants</p>
                             </div>
                             <div className={classes.linkButtonFlex}>
-                                <Home className={classes.icon}/>
+                                <MessageOutlined className={classes.icon}/>
                                 <p className={classes.LinkName}>Message</p>
                             </div>
                         </div>

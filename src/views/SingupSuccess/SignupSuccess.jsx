@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 //Components
 import GridContainer from "../../components/Grid/GridContainer"
 import GridItem from "../../components/Grid/GridItem"
-import PageLoader from '../../components/PageLoader/PageLoader'
 
 //Assets
 import Logo from "../../assets/images/liveizy-logo-1.png"
@@ -14,64 +13,13 @@ import Quote from "../../assets/images/quote.svg"
 
 
 //Component styles
-import styles from "./LoginStyles"
+import styles from "./SignupSuccessStyles"
 
-class Login extends Component {
-
-    state = {
-        email: '',
-        password: '',
-        auth: this.props.auth,
-        serverError: null,
-        loading: false
-    }
-
-    static getDerivedStateFromProps(props, state){
-        if (props.auth.loginDetails !== state.auth.loginDetails) {
-            const {loginDetails} = props.auth
-            if(!loginDetails.status) {
-                return {
-                  serverError: loginDetails.message,
-                  loading: false,
-                  email: '',
-                  password: ''              
-                }
-             } else {
-               props.history.push('/admin/property');
-             }
-          }
-          return null;        
-       }
-
-    onInputChange = (event) => {
-        this.setState({
-          [event.target.name]: event.target.value
-        })
-    
-      }
-
-      onLoginHandler = () => {
-        this.setState({
-            serverError: null
-        })
-
-          const {loginUser} = this.props
-          const { email, password } = this.state
-
-          if(email !== '' && password !== '') {
-            this.setState({
-                loading: true
-            })
-            return  loginUser({email, password})
-          }
-      }
-
+class SignupSuccess extends Component {
     render(){
-        const {email, password, loading, serverError} = this.state
         const {classes} = this.props
         return(
             <div className="home">
-                {loading && <PageLoader />}
                 <GridContainer className={classes.mainContainer}>
                     <GridItem md={4} className={classes.imageSection}>
                         <div className={classes.opacity}>
@@ -112,44 +60,25 @@ class Login extends Component {
                             </div>
 
                             <div className={classes.pageHeader}>
-                                <h1 className={classes.pageHeading}>LOGIN</h1>
+                                <h1 className={classes.pageHeading}>Congratulations!</h1>
                             </div>
 
                             <GridContainer>
                                 <GridItem md={8}>
-                                    <div className={classes.inputItem}>
-                                        <p className={classes.label}>Email Address</p>
-                                        <input type="text" placeholder="Your Email Address" className={classes.input} name="email" value={email} onChange={this.onInputChange}/>
-                                    </div>
-                                </GridItem>
-                                <GridItem md={8}>
-                                    <div className={classes.inputItem}>
-                                        <p className={classes.label}>Create Password</p>
-                                        <input type="password" placeholder="Type Your Password" className={classes.input} name="password" value={password} onChange={this.onInputChange}/>
-                                    </div>
-                                    <div className={classes.forgetPassword}>
-                                        Forget Password?
-                                    </div>
+                                    <div className={classes.successCard}>
+                                        <p>
 
+                                        Your Have Sucessfully Created and Account, kindly Login to access your dashboard
+                                        </p>
+                                    </div>
                                 </GridItem>
     
-                                {serverError && <GridItem>
-                                    <div className="server-error">
-                                    <p>Kindly fix the errors</p>
-                                    <p>{serverError}</p>
-                                    </div>
-                                </GridItem>}
                             </GridContainer>
 
-                            <div className={classes.buttonWrapper}>
-                                <button className={classes.button} onClick={this.onLoginHandler}>
-                                    Login
-                                </button>
-                            </div>
 
                             <div className={classes.termsWrapper}>
                                 <p className={classes.terms}>
-                                Need a Liveizy account? <Link to="/"><span className={classes.liveizyTerms}>Create an account</span></Link>
+                                Navigate to <Link to="/login"><span className={classes.loginLink}>Login Page</span></Link>
                                 </p>
                             </div>
                         </div>
@@ -160,4 +89,4 @@ class Login extends Component {
     }
 }
 
-export default withStyles(styles)(Login);
+export default withStyles(styles)(SignupSuccess);

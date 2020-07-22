@@ -9,11 +9,12 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import rootReducer from './reducers';
 import './index.css';
 
-
+import PageLoader from './components/PageLoader/PageLoader';
 
 //Pages
-const Home = lazy(() => import('./views/Home/Home'))
-const Login = lazy(() => import('./views/Login/Login'))
+const Home = lazy(() => import('./containers/Register'))
+const Login = lazy(() => import('./containers/Login'))
+const SignupSuccess = lazy(() => import('./views/SingupSuccess/SignupSuccess'))
 
 //Dashboard Routes
 const Dashboard = lazy(() => import('./Layouts/Dashboard'))
@@ -27,12 +28,13 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<PageLoader />}>
       <React.StrictMode>
           <Router history={hist}>
             <Switch>
                <Route path="/admin" component={Dashboard} />
                <Route path="/login" component={Login} />
+               <Route exact path="/signup-success" component={SignupSuccess} />
                <Route exact path="/" component={Home} />
             </Switch>
           </Router>

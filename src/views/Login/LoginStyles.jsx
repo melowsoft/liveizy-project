@@ -76,7 +76,8 @@ const styles = {
         letterSpacing: '0.07px',
         fontWeight: 600,
         marginTop: 15,
-        marginBottom: 20
+        marginBottom: 20,
+        cursor: 'pointer'
     },
     terms: {
         color: '#333232'

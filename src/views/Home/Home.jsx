@@ -14,12 +14,85 @@ import Quote from "../../assets/images/quote.svg"
 
 //Component styles
 import styles from "./HomeStyles"
+import PageLoader from '../../components/PageLoader/PageLoader'
 
 class Home extends Component {
+
+    state = {
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+        phoneNumber: '',
+        auth: this.props.auth,
+        serverError: null,
+        loading: false
+    }
+
+    static getDerivedStateFromProps(props, state){
+        if (props.auth.signedUpDetails !== state.auth.signedUpDetails) {
+            const {signedUpDetails} = props.auth
+            if(!signedUpDetails.data.status) {
+                return {
+                  serverError: signedUpDetails.data.message,
+                  loading: false,
+                  firstName: '',
+                  lastName: '',
+                  email: '',
+                  password: '',
+                  confirmPassword: '',
+                  phoneNumber: '',
+                  
+                }
+             } else {
+               props.history.push('signup-success');
+             }
+          }
+          return null;        
+       }
+
+    onInputChange = (event) => {
+        this.setState({
+          [event.target.name]: event.target.value
+        })
+    
+      }
+
+      onCreateHandler = () => {
+        this.setState({
+            serverError: null
+        })
+          const {signupUser} = this.props
+          const {firstName, lastName, email, password, confirmPassword, phoneNumber} = this.state
+
+          if (firstName !== '' && lastName !== '' && email !== '' && password !== '' && confirmPassword !== ''){
+            
+            if (password === confirmPassword){
+
+                const deatils = {
+                    firstName,
+                     lastName,
+                      email,
+                      phoneNumber,
+                      password 
+                 }  
+                 this.setState({
+                     loading: true
+                 })
+                 signupUser(deatils)                    
+            }
+           
+          }
+      }
+
     render(){
         const {classes} = this.props
+        const  { firstName, email, password, confirmPassword, phoneNumber, lastName, serverError, loading } = this.state
+        console.log(this.state.serverError, "error message")
         return(
             <div className="home">
+                {loading && <PageLoader />}
                 <GridContainer className={classes.mainContainer}>
                     <GridItem md={4} className={classes.imageSection}>
                         <div className={classes.opacity}>
@@ -67,38 +140,50 @@ class Home extends Component {
                             <GridContainer>
                                 <GridItem md={6}>
                                     <div className={classes.inputItem}>
-                                        <p className={classes.label}>Full Name</p>
-                                        <input type="text" placeholder="Your First Name" className={classes.input}/>
+                                        <p className={classes.label}>First Name</p>
+                                        <input type="text" placeholder="Your First Name" className={classes.input} name="firstName" value={firstName} onChange={this.onInputChange}/>
+                                    </div>
+                                </GridItem>
+                                <GridItem md={6}>
+                                    <div className={classes.inputItem}>
+                                        <p className={classes.label}>Last Name</p>
+                                        <input type="text" placeholder="Your Last Name" className={classes.input} name="lastName" value={lastName} onChange={this.onInputChange}/>
                                     </div>
                                 </GridItem>
                                 <GridItem md={6}>
                                     <div className={classes.inputItem}>
                                         <p className={classes.label}>Email Address</p>
-                                        <input type="text" placeholder="Your Email Address" className={classes.input}/>
+                                        <input type="text" placeholder="Your Email Address" className={classes.input} name="email" value={email} onChange={this.onInputChange}/>
+                                    </div>
+                                </GridItem>
+                                <GridItem md={6}>
+                                    <div className={classes.inputItem}>
+                                        <p className={classes.label}>Phone Number</p>
+                                        <input type="text" placeholder="Your Phone Number" className={classes.input} name="phoneNumber" value={phoneNumber} onChange={this.onInputChange}/>
                                     </div>
                                 </GridItem>
                                 <GridItem md={6}>
                                     <div className={classes.inputItem}>
                                         <p className={classes.label}>Create Password</p>
-                                        <input type="text" placeholder="Type Your Password" className={classes.input}/>
+                                        <input type="password" placeholder="Type Your Password" className={classes.input} name="password" value={password} onChange={this.onInputChange}/>
                                     </div>
                                 </GridItem>
                                 <GridItem md={6}>
                                     <div className={classes.inputItem}>
                                         <p className={classes.label}>Confirm Password</p>
-                                        <input type="text" placeholder="Re-type Your Password" className={classes.input}/>
+                                        <input type="password" placeholder="Re-type Your Password" className={classes.input} name="confirmPassword" value={confirmPassword} onChange={this.onInputChange}/>
                                     </div>
                                 </GridItem>
-                                <GridItem md={6}>
-                                    <div className={classes.inputItem}>
-                                        <p className={classes.label}>Referral</p>
-                                        <input type="text" placeholder="Your Referral" className={classes.input}/>
+                                {serverError && <GridItem>
+                                    <div className="server-error">
+                                    <p>Kindly fix the errors</p>
+                                    <p>{serverError}</p>
                                     </div>
-                                </GridItem>
+                                </GridItem>}
                             </GridContainer>
 
                             <div className={classes.buttonWrapper}>
-                                <button className={classes.button}>
+                                <button className={classes.button} onClick={this.onCreateHandler}>
                                     Create Account
                                 </button>
                             </div>

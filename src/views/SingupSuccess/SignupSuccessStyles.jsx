@@ -76,8 +76,7 @@ const styles = {
         letterSpacing: '0.07px',
         fontWeight: 600,
         marginTop: 15,
-        marginBottom: 20,
-        cursor: 'pointer'
+        marginBottom: 20
     },
     terms: {
         color: '#333232'
@@ -155,6 +154,28 @@ const styles = {
     quoteIcon: {
         width: 20,
         height: 30
+    },
+    forgetPassword: {
+        display: 'inline',
+        float: 'right',
+        color: '#1461A2'
+    },
+    successCard: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        background: '#FFFFFF',
+        borderRadius: 10,
+        padding: '30px',
+        width: 400,
+        height: 100,
+        fontSize: 16
+    },
+    loginLink: {
+        cursor: 'pointer'
+    },
+    erorrs: {
+        color: '#b90b0b'
     }
 }
 
