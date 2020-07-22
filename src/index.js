@@ -9,6 +9,10 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import rootReducer from './reducers';
 import './index.css';
 
+//protected route
+import {ProtectedRoute} from './components/ProtectedRoute/ProtectedRoute'
+
+
 import PageLoader from './components/PageLoader/PageLoader';
 
 //Pages
@@ -32,7 +36,7 @@ ReactDOM.render(
       <React.StrictMode>
           <Router history={hist}>
             <Switch>
-               <Route path="/admin" component={Dashboard} />
+               <ProtectedRoute path="/admin" component={Dashboard} />
                <Route path="/login" component={Login} />
                <Route exact path="/signup-success" component={SignupSuccess} />
                <Route exact path="/" component={Home} />

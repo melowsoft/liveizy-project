@@ -14,9 +14,6 @@ const styles = {
     rightItem:{
         display: 'flex'
     },
-    userFlex: {
-        display: 'flex'
-    },
     hrWrapper: {
         marginRight: 15
     },

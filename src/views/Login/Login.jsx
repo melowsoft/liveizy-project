@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {withStyles} from "@material-ui/core"
+import {withStyles, Hidden} from "@material-ui/core"
 import { Link } from 'react-router-dom'
 
 //Components
@@ -75,6 +75,8 @@ class Login extends Component {
                         <div className={classes.opacity}>
                         
                         </div>
+
+                        <Hidden smDown> 
                         <div className={classes.quoteBox}>
                         <div className={classes.quoteSign}>
                                        <img src={Quote} alt="quote" className={classes.quoteIcon}/>
@@ -101,6 +103,7 @@ class Login extends Component {
                                 </div>   
                            </div>
                         </div>
+                        </Hidden>
                        
                     </GridItem>
                     <GridItem md={8} className={classes.formSection}>

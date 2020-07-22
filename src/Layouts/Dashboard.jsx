@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withStyles } from "@material-ui/core"
-import PropTypes from 'prop-types'
-import { Switch, Route, Redirect} from 'react-router-dom'
+
+import { Switch, Route} from 'react-router-dom'
 
 //routes
 import routes from './DashboardRoutes'

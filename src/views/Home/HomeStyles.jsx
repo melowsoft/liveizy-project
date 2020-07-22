@@ -1,6 +1,6 @@
 //Assets
 import HomeBackground from "../../assets/images/man-standing-on-balcony-1725385.png"
-import { flexbox } from "@material-ui/system"
+
 
 
 const styles = {
@@ -44,9 +44,7 @@ const styles = {
         width: 151,
         height: 51
     },
-    pageHeading: {
-        textTransform: 'uppercase'
-    },
+
     alt: {
         color: '#333232'
     },
@@ -150,7 +148,8 @@ const styles = {
     },
     pageHeading: {
         fontSize: 32,
-        color: '#043B5C'
+        color: '#043B5C',
+        textTransform: 'uppercase'
     },
     quoteIcon: {
         width: 20,

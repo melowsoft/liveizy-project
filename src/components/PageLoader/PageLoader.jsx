@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 
-const PageLoader = () => (  <div class="page-loader">
-<div class="col-sm-6 text-center loading-text-div">
+const PageLoader = () => (  <div className="page-loader">
+<div className="col-sm-6 text-center loading-text-div">
     <p>Loading</p><div class="loader3">
 <span></span>
 <span></span>

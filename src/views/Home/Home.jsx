@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {withStyles} from "@material-ui/core"
+import {withStyles, Hidden} from "@material-ui/core"
 import { Link } from 'react-router-dom'
 
 //Components
@@ -34,10 +34,10 @@ class Home extends Component {
         if (props.auth.signedUpDetails !== state.auth.signedUpDetails) {
             const {signedUpDetails} = props.auth
             if(!signedUpDetails.data.status) {
-               return this.setState ({
+                return {
                   serverError: signedUpDetails.data.message,
-                  loading: false              
-                })
+                  loading: false                  
+                }
              } else {
                props.history.push('signup-success');
              }
@@ -46,7 +46,6 @@ class Home extends Component {
        }
 
     onInputChange = (event) => {
-        console.log(event.target.value, event.target.name, "on change", this.state)
         this.setState({
           [event.target.name]: event.target.value
         })
@@ -92,6 +91,8 @@ class Home extends Component {
                         <div className={classes.opacity}>
                         
                         </div>
+
+                        <Hidden smDown>
                         <div className={classes.quoteBox}>
                         <div className={classes.quoteSign}>
                                        <img src={Quote} alt="quote" className={classes.quoteIcon}/>
@@ -118,7 +119,7 @@ class Home extends Component {
                                 </div>   
                            </div>
                         </div>
-                       
+                        </Hidden>
                     </GridItem>
                     <GridItem md={8} className={classes.formSection}>
                         <div className={classes.formWrapper}>
